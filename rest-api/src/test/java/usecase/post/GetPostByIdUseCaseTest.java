@@ -1,0 +1,57 @@
+package usecase.post;
+
+import com.rti.service.likes.PostLikesService;
+import com.rti.service.post.PostService;
+import com.rti.usecase.post.GetPostByIdUseCase;
+import com.rti.usecase.post.mapper.GetPostByIdUseCaseMapper;
+import helper.TestHelper;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+public class GetPostByIdUseCaseTest {
+
+    @InjectMocks
+    private GetPostByIdUseCase getPostByIdUseCase;
+
+    @Mock
+    private PostService postService;
+
+    @Mock
+    private PostLikesService postLikesService;
+
+    @Mock
+    private GetPostByIdUseCaseMapper mapper;
+
+    @BeforeEach
+    public void setup() {
+        MockitoAnnotations.openMocks(this);
+    }
+
+    @Test
+    public void testExecute() {
+        var postId = TestHelper.mockPostId();
+        var postDto = TestHelper.mockPostDto();
+        var likesCount = TestHelper.mockLikesCount();
+        var response = TestHelper.mockPostCompleteResponse();
+
+        when(postService.getPostById(postId)).thenReturn(postDto);
+        when(postLikesService.getPostLikesCount(postDto.getId())).thenReturn(likesCount);
+        when(mapper.mappingPostCompleteResponseBy(postDto, likesCount)).thenReturn(response);
+
+        var result = getPostByIdUseCase.execute(postId);
+
+        Assertions.assertNotNull(result);
+        verify(postService, times(1)).getPostById(postId);
+        verify(postLikesService, times(1)).getPostLikesCount(postDto.getId());
+        verify(mapper, times(1)).mappingPostCompleteResponseBy(postDto, likesCount);
+    }
+}
+
