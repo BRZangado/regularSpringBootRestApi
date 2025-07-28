@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /puppies-rest-api
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/puppies?allowPublicKeyRetrieval=true&useSSL=false
+    username: puppies
+    password: puppies123
+    driverClassName: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimumIdle: 2
+      maximumPoolSize: 5
+      connectionTimeout: 30000
+      idleTimeout: 30000
+      poolName: AuthSrvPool
+      maxLifetime: 2000000
+  jpa:
+    database: mysql
+    showSql: false
+    openInView: true
+    hibernate:
+      ddlAuto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        enableLazyLoadNoTrans: true
+        jdbc:
+          time_zone: UTC

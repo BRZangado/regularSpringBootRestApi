@@ -1,0 +1,332 @@
+{
+	"info": {
+		"_postman_id": "993771d9-e610-43d1-8e75-da20dbfecac2",
+		"name": "puppiesCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33366063"
+	},
+	"item": [
+		{
+			"name": "Create new User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Bruno Rodrigues\",\n    \"email\":\"teste@hotmail.com\",\n    \"password\":\"test123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/puppies-rest-api/v1/user",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"puppies-rest-api",
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User authentication (Get token)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "teste@hotmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/puppies-rest-api/v1/auth",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"puppies-rest-api",
+						"v1",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all user ids list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiYjMxZDg2MWEtZDAxYS00YzA4LWE4YjYtMmYzZGVlYmViMDE0IiwiaWF0IjoxNzUzNjY0MTc0LCJleHAiOjE3NTM2NzQ5NzR9.CEBhasRIcU7SMLaVGyUfuUF1RaE6_MSjCaY6g_Xs1BQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/puppies-rest-api/v1/user/list",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"puppies-rest-api",
+						"v1",
+						"user",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user profile by user id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiYjMxZDg2MWEtZDAxYS00YzA4LWE4YjYtMmYzZGVlYmViMDE0IiwiaWF0IjoxNzUzNjY0MTc0LCJleHAiOjE3NTM2NzQ5NzR9.CEBhasRIcU7SMLaVGyUfuUF1RaE6_MSjCaY6g_Xs1BQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/puppies-rest-api/v1/user/b31d861a-d01a-4c08-a8b6-2f3deebeb014",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"puppies-rest-api",
+						"v1",
+						"user",
+						"b31d861a-d01a-4c08-a8b6-2f3deebeb014"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user feed by user id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiYjMxZDg2MWEtZDAxYS00YzA4LWE4YjYtMmYzZGVlYmViMDE0IiwiaWF0IjoxNzUzNjY0MTc0LCJleHAiOjE3NTM2NzQ5NzR9.CEBhasRIcU7SMLaVGyUfuUF1RaE6_MSjCaY6g_Xs1BQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/puppies-rest-api/v1/user/b31d861a-d01a-4c08-a8b6-2f3deebeb014/feed",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"puppies-rest-api",
+						"v1",
+						"user",
+						"b31d861a-d01a-4c08-a8b6-2f3deebeb014",
+						"feed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiYjMxZDg2MWEtZDAxYS00YzA4LWE4YjYtMmYzZGVlYmViMDE0IiwiaWF0IjoxNzUzNjYzMzc2LCJleHAiOjE3NTM2NzQxNzZ9.1n3JcISPqWieX8Lt-CQtkXSvFMt2Cjh7RARTDKPJVJ4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"imageUrl\":\"imageUrl\",\n    \"content\":\"content\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/puppies-rest-api/v1/post",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"puppies-rest-api",
+						"v1",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get logged user posts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiYjMxZDg2MWEtZDAxYS00YzA4LWE4YjYtMmYzZGVlYmViMDE0IiwiaWF0IjoxNzUzNjYzMzc2LCJleHAiOjE3NTM2NzQxNzZ9.1n3JcISPqWieX8Lt-CQtkXSvFMt2Cjh7RARTDKPJVJ4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/puppies-rest-api/v1/post/list",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"puppies-rest-api",
+						"v1",
+						"post",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Post's details by post id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiYjMxZDg2MWEtZDAxYS00YzA4LWE4YjYtMmYzZGVlYmViMDE0IiwiaWF0IjoxNzUzNjYzMzc2LCJleHAiOjE3NTM2NzQxNzZ9.1n3JcISPqWieX8Lt-CQtkXSvFMt2Cjh7RARTDKPJVJ4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/puppies-rest-api/v1/post/c0a3258d-8b93-4a5c-8ccd-f231acf08be7",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"puppies-rest-api",
+						"v1",
+						"post",
+						"c0a3258d-8b93-4a5c-8ccd-f231acf08be7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Like a post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiNDE5ODdjM2ItNzE1Zi00OWUyLTlhMTQtNDk3NTVlNGNlMzJjIiwiaWF0IjoxNzUzNjY0ODkwLCJleHAiOjE3NTM2NzU2OTB9.TqlqLHxGQADcsBrYoDhKGlrTb2dtzSOUKtmogTW31h4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/puppies-rest-api/v1/post/c0a3258d-8b93-4a5c-8ccd-f231acf08be7/like",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"puppies-rest-api",
+						"v1",
+						"post",
+						"c0a3258d-8b93-4a5c-8ccd-f231acf08be7",
+						"like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get logged user liked posts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiYmM3NjViNGQtMTJmOS00NDg0LWFmNTktYzg5Zjk2YWIyNDZmIiwiaWF0IjoxNzUzNjY1MTU5LCJleHAiOjE3NTM2NzU5NTl9.9ynTj2eJHX1Cf45vg6rG_NEJlNM8Y1h2plegtoGOj-Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/puppies-rest-api/v1/post/liked",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"puppies-rest-api",
+						"v1",
+						"post",
+						"liked"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
