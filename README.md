@@ -58,4 +58,4 @@ This command will:
 - Launch the REST API server
 
 ## Testing in postman
-You can use puppiesCollection.postman_collection located at the root of this project to import all endpoints into postman and test the application
+You can use puppiesCollection.postman_collection located at the root of this project to import all endpoints into postman and test the application. Logged endpoints require the token retrieved from the auth endpoint to be sent (Bearer token)
